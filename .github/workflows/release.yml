@@ -7,11 +7,17 @@ on:
 
 jobs:
   release:
-    name: Create new Sentry release and Deploy
     runs-on: ubuntu-18.04
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+      SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+      SENTRY_URL: https://sentry.imagetrial.com/
+      GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: getsentry/action-release@v1
+      - uses: actions/checkout@v1.0.0
+      - name: Create new Sentry release and Deploy
       - run: |
           curl -sL https://sentry.imagetrial.com/get-cli/ | bash
           
@@ -21,9 +27,3 @@ jobs:
           sentry-cli releases finalize $SENTRY_RELEASE
           
           sentry-cli releases deploys $SENTRY_RELEASE new -e $SENTRY_DEPLOY_ENVIRONMENT
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
-          SENTRY_URL: https://sentry.imagetrial.com/
-          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
