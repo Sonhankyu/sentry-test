@@ -9,12 +9,12 @@ jobs:
   release:
     name: Create new Sentry release and Deploy
     runs-on: ubuntu-18.04
-  env:
-    SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-    SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-    SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
-    SENTRY_URL: https://sentry.imagetrial.com/
-    GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+      SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+      SENTRY_URL: ${{ secrets.SENTRY_URL }}
+      GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
 
     steps:
       - uses: actions/checkout@v1.0.0
