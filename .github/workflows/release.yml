@@ -6,7 +6,7 @@ on:
       - dev
 
 jobs:
-  release:
+  checkout:
     name: Create new Sentry release and Deploy
     runs-on: ubuntu-18.04
     steps:
