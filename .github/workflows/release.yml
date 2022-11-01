@@ -3,7 +3,7 @@ name: Sentry Release and Deploy
 on:
   push:
     branches:
-      - master
+      - dev
 
 jobs:
   release:
@@ -12,10 +12,11 @@ jobs:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
       SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
-      SENTRY_DEPLOY_ENVIRONMENT: ${{ secrets.SENTRY_DEPLOY_ENVIRONMENT }}
+      SENTRY_URL: https://sentry.imagetrial.com/
 
     steps:
-      - uses: action/checkout@v1.0.0
+      - uses: action/checkout@v1
+      - uses: getsentry/action-release@v1
 
       - name: Create new Sentry release and Deploy
         run: |
