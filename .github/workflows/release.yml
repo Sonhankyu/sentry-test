@@ -7,12 +7,12 @@ on:
 
 jobs:
   release:
-    name: Create new Sentry release and Deploy
     runs-on: ubuntu-18.04
 
     steps:
       - uses: actions/checkout@v2
-      - uses: getsentry/action-release@v1
+      - name: Create new Sentry release and Deploy
+        uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
