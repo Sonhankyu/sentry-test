@@ -22,7 +22,7 @@ jobs:
       - run: |
           curl -sL https://sentry.imagetrial.com/get-cli/ | bash
           
-          export SENTRY_RELEASE=$(sentry-cli releases propose-version)
+          export SENTRY_RELEASE=$"(sentry-cli releases propose-version)"
           sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
           sentry-cli releases set-commits --auto $SENTRY_RELEASE
           sentry-cli releases finalize $SENTRY_RELEASE
