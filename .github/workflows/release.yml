@@ -22,7 +22,7 @@ jobs:
           SENTRY_URL: ${{ secrets.SENTRY_URL }}
           GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
       - run:
-          curl -sL https://sentry.imagetrial.com/get-cli/ | bash
+#          curl -sL https://sentry.imagetrial.com/get-cli/ | bash
           
           export SENTRY_RELEASE=$(sentry-cli releases propose-version)
           sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
