@@ -7,10 +7,11 @@ on:
 
 jobs:
   release:
+    name: Create new Sentry release and Deploy
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1.0.0
-      - name: Create new Sentry release and Deploy
+      - uses: getsentry/action-release@v1
       - run: |
           curl -sL https://sentry.imagetrial.com/get-cli/ | bash
           
