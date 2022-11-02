@@ -19,7 +19,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Create new Sentry release and Deploy
-      - run: |
+        run: |
           curl -sL https://sentry.io/get-cli/ | bash
           export SENTRY_RELEASE=$(sentry-cli releases propose-version)
           sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
