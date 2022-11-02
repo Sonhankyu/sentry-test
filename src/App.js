@@ -5,7 +5,7 @@ import * as Sentry from '@sentry/react';
 function App() {
 
     const onError = () => {
-        throw new Error('Error Test')
+        throw new Error('Error Test');
     }
 
     const btnStyles = {width: "200px", height: "50px", cursor: "pointer", fontSize: "22px"}
